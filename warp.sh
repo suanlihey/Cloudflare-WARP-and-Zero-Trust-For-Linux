@@ -110,6 +110,17 @@ fi
 [ "$EUID" -eq 0 ] && mkdir -p "$TMP_SANDBOX" && export TMPDIR="$TMP_SANDBOX"
 
 # --- 6. Core Functions ---
+
+# Adapting to 2026 CLI changes: warp-cli set-mode -> warp-cli mode
+warp_set_mode() {
+    local mode=$1
+    if warp-cli --help | grep -q "set-mode"; then
+        warp-cli set-mode "$mode"
+    else
+        warp-cli mode "$mode"
+    fi
+}
+
 discover_mtu() {
     printf "%s\n" "${L[mtu_detect]:-Detecting MTU...}"
     local wait_count=0
@@ -161,14 +172,14 @@ config_warp() {
     [ "$m_opt" == "0" ] && return
     
     if [ "$m_opt" == "2" ]; then
-        warp-cli set-mode proxy
+        warp_set_mode proxy
         read -p "${L[port_ask]:-Enter SOCKS5 Port (Default 40000):} " s_port
         s_port=${s_port:-40000}
         [[ ! "$s_port" =~ ^[0-9]+$ ]] && s_port=40000
         [ "$s_port" == "0" ] && return
         warp-cli set-proxy-port "$s_port"
     else
-        warp-cli set-mode warp
+        warp_set_mode warp
     fi
     
     printf "\n%s\n" "${L[team_ask]:-Use Zero Trust Team? (y/n):}"
