@@ -22,63 +22,76 @@
 </div>
 
 <hr />
-
-<div id="readme-en">
-    <h1 align="center">Cloudflare WARP & Zero Trust For Linux</h1>
-    <p align="center">
-        <strong>The ultimate intelligent adaptor for WARP deployment on any Linux environment.</strong>
-    </p>
-
-    <p align="center">
-        <img src="https://img.shields.io/badge/Version-1.0-blue.svg" alt="Version">
-        <img src="https://img.shields.io/badge/Platform-Linux-orange.svg" alt="Platform">
-        <img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License">
-    </p>
-
-    <h2>🚀 Features</h2>
-    <ul>
-        <li><strong>Multi-Language Support:</strong> Dynamic remote language pack loading (10+ languages).</li>
-        <li><strong>Zero Trust Integration:</strong> Seamless automated Team account enrollment via Tokens.</li>
-        <li><strong>Hardware Sensing:</strong> Automatically adjusts memory limits and log levels based on VPS RAM (Low/Med/High).</li>
-        <li><strong>Network Self-Healing:</strong> Built-in monitor (<code>warp-mgr</code>) to detect disconnection and auto-reconnect.</li>
-        <li><strong>Intelligent Routing:</strong> Automatic exclusion of local IP ranges and multi-hop routes to prevent SSH lockout.</li>
-        <li><strong>MTU Optimization:</strong> Heuristic path discovery to find the optimal MTU for your specific network.</li>
-    </ul>
-
-    
-
-    <h2>📥 One-Key Installation</h2>
-    <p>Run the following command to start the interactive deployment:</p>
-    <pre><code>wget -N https://raw.githubusercontent.com/suanlihey/Cloudflare-WARP-and-Zero-Trust-For-Linux/refs/heads/main/warp.sh && chmod +x warp.sh && ./warp.sh</code></pre>
-
-    <h2>🛠 Operation Logic</h2>
-    <ol>
-        <li><strong>Language Selection:</strong> Choose your preferred language on the first screen.</li>
-        <li><strong>Hardware Detection:</strong> The script identifies your CPU/RAM resources.</li>
-        <li><strong>Installation:</strong> Installs official <code>cloudflare-warp</code> and configures Systemd overrides.</li>
-        <li><strong>Account Setup:</strong> Choose between Free WARP or Zero Trust Teams (Manual/Token).</li>
-        <li><strong>Optimization:</strong> Performs MTU detection and sets up <code>gai.conf</code> for IPv4/IPv6 precedence.</li>
-    </ol>
-
-    <h2>📊 Management Commands</h2>
-    <p>After installation, you can use <code>warp-mgr</code> to manage the service:</p>
-    <ul>
-        <li><code>warp-mgr</code>: Check current connection status.</li>
-        <li><code>warp-mgr reconnect</code>: Force restart and reconnect the tunnel.</li>
-        <li><code>warp-mgr monitor</code>: Run a health check (used by Cron).</li>
-    </ul>
-
-    <h2>⚠️ Precautions</h2>
-    <blockquote>
-        Always ensure you have a backup access method (like VNC) when deploying network-layer tools, although this script includes route protection for SSH.
-    </blockquote>
-</div>
-
-<hr />
-
-<div align="center">
-    <p><i>Full translations for other languages are available in the repository sub-directories.</i></p>
-</div>
-
 </body>
 </html>
+
+Cloudflare WARP & Zero Trust Global Adaptor v1.0
+A professional, high-performance shell script designed for seamless deployment and management of Cloudflare WARP and Zero Trust (Teams) on Linux servers. This tool features intelligent hardware sensing, automated multi-language support via remote language packs, and advanced network self-healing capabilities.
+
+🚀 Key Features
+1. Intelligent Hardware Sensing
+The script automatically detects system resources (CPU cores and RAM) using Cgroup and physical memory analysis. It then applies one of three optimized profiles:
+
+LOW (Memory < 300MB): Aggressive memory capping (100MB), disabled logs, and extended restart delays for maximum stability on tiny VPS instances.
+
+MED (Memory < 1024MB): Balanced resource allocation (256MB cap) and error-only logging.
+
+HIGH (Memory > 1GB): High-performance mode with 512MB memory allowance and standard logging.
+
+2. Universal Language Engine
+Supports 10 major languages via an externalized language pack hosted on GitHub. The script fetches and applies translations dynamically based on your selection at startup:
+
+English, Chinese (Simplified), Russian, Persian, Japanese, Spanish, French, German, Korean, and Portuguese.
+
+3. Dual Operation Modes
+Global Mode (WARP): Creates a virtual network interface (CloudflareWARP) to route all system traffic through Cloudflare’s global network.
+
+Proxy Mode (SOCKS5): Runs WARP as a local proxy (Default: 127.0.0.1:40000), allowing specific applications to use the tunnel without changing the system routing table.
+
+4. Zero Trust (Teams) Integration
+Automated Enrollment: Supports one-click registration using TEAM_TOKEN for headless/automated environments.
+
+Interactive Enrollment: Guided setup for Team Name (Organization) and browser-based authentication.
+
+Certificate Automation: Automatically downloads and installs the Cloudflare Root CA into the system trust store for HTTPS inspection support.
+
+5. Advanced Network Routing
+Multi-Interface Exclusion: Automatically scans all local network interfaces and excludes their CIDR ranges to prevent SSH lockouts and local routing conflicts.
+
+Endpoint Resolution: Dynamically resolves Cloudflare Endpoint IPs (IPv4/IPv6) and adds them to the exclusion list.
+
+IPv4 Priority Patch: Atomically modifies gai.conf to prioritize IPv4 over IPv6 when needed, ensuring stability on dual-stack or IPv6-only servers.
+
+6. Self-Healing & MTU Optimization
+Path MTU Discovery: Executes a heuristic ping test (1420 to 1350 bytes) to find the largest stable MTU for your specific network path, preventing packet fragmentation.
+
+Systemd Monitor: Installs a background watchdog (warp-mgr) that checks connectivity via cloudflare.com/cdn-cgi/trace. If the connection fails 3 consecutive times, the service automatically restarts.
+
+🛠 Installation & Usage
+Run the following command on your Linux terminal (Root privileges required):
+
+Bash
+wget -O warp.sh https://raw.githubusercontent.com/suanlihey/Cloudflare-WARP-and-Zero-Trust-For-Linux/refs/heads/main/warp.sh && chmod +x warp.sh && ./warp.sh
+Script Options
+Language Selection: Select your preferred language (1-10) upon first run.
+
+Intelligent Deployment: Installs dependencies, sets up the WARP client, configures accounts, and applies optimizations.
+
+Deep Uninstall: Completely removes the WARP client, clears systemd overrides, restores gai.conf, and cleans up all configuration directories.
+
+📁 Project Structure
+warp.sh: The core execution engine.
+
+Language.sh: External language pack for multi-language support.
+
+warp-mgr: Local management tool (installed to /usr/local/bin/) for status checks and manual reconnection.
+
+🛡 Stability Notes
+TUN Support: The script checks for TUN device availability and attempts to fix missing device nodes automatically.
+
+Service Isolation: Uses Systemd override.conf to ensure Cloudflare WARP never exceeds its allocated memory profile, protecting your other server applications from OOM (Out Of Memory) crashes.
+
+📄 License
+This project is released under the MIT License. Use it responsibly for network optimization and security.
+
+Would you like me to generate a specific Wiki page for any of these features or provide the installation instructions for a particular Linux distribution?
