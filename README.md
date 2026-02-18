@@ -8,7 +8,7 @@
 <div align="center">
     <h2>🌍 Language Select / 语言选择</h2>
     <p>
-        <a href="#readme-zh">中文</a> • 
+        <a href="README-zh.md">中文</a> • 
         <a href="#readme-ru">Русский</a> • 
         <a href="#readme-fa">فارسی</a> • 
         <a href="#readme-ja">日本語</a> • 
