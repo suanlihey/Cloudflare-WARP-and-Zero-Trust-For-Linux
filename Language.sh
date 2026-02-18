@@ -3,9 +3,8 @@ Cloudflare WARP Global Adaptor - External Language Pack
 Version: 2026.02.18
 Format: Bash Associative Array
 =======================================================
-Usage: curl -sL https://YOUR_URL/lang.sh | source /dev/stdin
 1. English (Default)
-L_1_menu_title="Cloudflare WARP Global Adaptor v11.3"
+L_1_menu_title="Cloudflare WARP Global Adaptor v1.0"
 L_1_hw_info="Hardware Profile: %s | RAM: %sMB"
 L_1_opt_1="1. Intelligent Deployment (Zero Trust / Free)"
 L_1_opt_2="2. Deep Uninstall & Cleanup"
@@ -24,7 +23,7 @@ L_1_name_ask="Enter Team Name (Organization):"
 L_1_mode_ask="Select Mode: 1. Global (WARP) 2. Proxy (SOCKS5):"
 
 2. 中文 (Chinese Simplified)
-L_2_menu_title="Cloudflare WARP 全环境智能适配版 v11.3"
+L_2_menu_title="Cloudflare WARP 全环境智能适配版 v1.0"
 L_2_hw_info="硬件档位: %s | 内存: %sMB"
 L_2_opt_1="1. 智能部署 (零信任 Teams / 免费版)"
 L_2_opt_2="2. 深度卸载与环境清理"
@@ -40,7 +39,7 @@ L_2_name_ask="输入 Team Name (组织名称):"
 L_2_mode_ask="选择模式: 1. 全局虚拟网卡 2. SOCKS5 代理:"
 
 3. Русский (Russian)
-L_3_menu_title="Cloudflare WARP Интеллектуальный адаптер v11.3"
+L_3_menu_title="Cloudflare WARP Интеллектуальный адаптер v1.0"
 L_3_hw_info="Профиль: %s | RAM: %sМБ"
 L_3_opt_1="1. Интеллектуальное развертывание"
 L_3_opt_2="2. Полное удаление и очистка"
@@ -56,7 +55,7 @@ L_3_name_ask="Введите Team Name (организация):"
 L_3_mode_ask="Режим: 1. Глобальный (WARP) 2. Прокси (SOCKS5):"
 
 4. فارسی (Persian)
-L_4_menu_title="نصب‌کننده هوشمند Cloudflare WARP v11.3"
+L_4_menu_title="نصب‌کننده هوشمند Cloudflare WARP v1.0"
 L_4_hw_info="پروفایل سخت‌افزار: %s | حافظه: %sMB"
 L_4_opt_1="1. استقرار هوشمند (Teams / رایگان)"
 L_4_opt_2="2. حذف کامل و پاکسازی"
@@ -72,7 +71,7 @@ L_4_name_ask="نام تیم را وارد کنید:"
 L_4_mode_ask="انتخاب حالت: 1. جهانی (WARP) 2. پروکسی (SOCKS5):"
 
 5. 日本語 (Japanese)
-L_5_menu_title="Cloudflare WARP 全環境適応版 v11.3"
+L_5_menu_title="Cloudflare WARP 全環境適応版 v1.0"
 L_5_hw_info="ハードウェア: %s | メモリ: %sMB"
 L_5_opt_1="1. インテリジェント展開 (Teams / 無料版)"
 L_5_opt_2 Japanese_opt_2="2. ディープアンインストールとクリーンアップ"
@@ -88,35 +87,35 @@ L_5_name_ask="チーム名を入力してください:"
 L_5_mode_ask="モード選択: 1. グローバル (WARP) 2. プロキシ (SOCKS5):"
 
 6. Español (Spanish)
-L_6_menu_title="Adaptador Global Cloudflare WARP v11.3"
+L_6_menu_title="Adaptador Global Cloudflare WARP v1.0"
 L_6_opt_1="1. Despliegue Inteligente (Teams / Gratis)"
 L_6_opt_2="2. Desinstalación Profunda"
 L_6_team_ask="¿Usar cuenta de Zero Trust Team? (y/n):"
 L_6_mode_ask="Modo: 1. Global (WARP) 2. Proxy (SOCKS5):"
 
 7. Français (French)
-L_7_menu_title="Adaptateur Global Cloudflare WARP v11.3"
+L_7_menu_title="Adaptateur Global Cloudflare WARP v1.0"
 L_7_opt_1="1. Déploiement Intelligent (Teams / Gratuit)"
 L_7_opt_2="2. Désinstallation Complète"
 L_7_team_ask="Utiliser un compte Zero Trust Team ? (y/n) :"
 L_7_mode_ask="Mode : 1. Global (WARP) 2. Proxy (SOCKS5) :"
 
 8. Deutsch (German)
-L_8_menu_title="Cloudflare WARP Globaler Adapter v11.3"
+L_8_menu_title="Cloudflare WARP Globaler Adapter v1.0"
 L_8_opt_1="1. Intelligente Bereitstellung (Teams / Kostenlos)"
 L_8_opt_2="2. Tiefen-Deinstallation"
 L_8_team_ask="Zero Trust Team-Konto verwenden? (j/n):"
 L_8_mode_ask="Modus: 1. Global (WARP) 2. Proxy (SOCKS5):"
 
 9. 한국어 (Korean)
-L_9_menu_title="Cloudflare WARP 글로벌 어댑터 v11.3"
+L_9_menu_title="Cloudflare WARP 글로벌 어댑터 v1.0"
 L_9_opt_1="1. 지능형 배포 (Teams / 무료)"
 L_9_opt_2="2. 전체 삭제 및 정리"
 L_9_team_ask="Zero Trust Team 계정을 사용하시겠습니까? (y/n):"
 L_9_mode_ask="모드 선택: 1. 전체 (WARP) 2. 프록시 (SOCKS5):"
 
 10. Português (Portuguese)
-L_10_menu_title="Adaptador Global Cloudflare WARP v11.3"
+L_10_menu_title="Adaptador Global Cloudflare WARP v1.0"
 L_10_opt_1="1. Implantação Inteligente (Teams / Grátis)"
 L_10_opt_2="2. Desinstalação Profunda"
 L_10_team_ask="Usar conta Zero Trust Team? (s/n):"
