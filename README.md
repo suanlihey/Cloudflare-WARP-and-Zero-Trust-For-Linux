@@ -6,17 +6,17 @@
 <body>
 
 <div align="center">
-    <h2>🌍 Language Select / 语言选择</h2>
+    <h2>🌍 Language Select</h2>
     <p>
         <a href="README-zh.md">中文</a> • 
-        <a href="#readme-ru">Русский</a> • 
-        <a href="#readme-fa">فارسی</a> • 
-        <a href="#readme-ja">日本語</a> • 
-        <a href="#readme-es">Español</a> • 
-        <a href="#readme-fr">Français</a> • 
-        <a href="#readme-de">Deutsch</a> • 
-        <a href="#readme-ko">한국어</a> • 
-        <a href="#readme-pt">Português</a>
+        <a href="README-ru.md">Русский</a> • 
+        <a href="README-fa.md">فارسی</a> • 
+        <a href="README-ja.md">日本語</a> • 
+        <a href="README-es.md">Español</a> • 
+        <a href="README-fr.md">Français</a> • 
+        <a href="README-de.md">Deutsch</a> • 
+        <a href="README-ko.md">한국어</a> • 
+        <a href="README-pt.md">Português</a>
     </p>
 </div>
 
