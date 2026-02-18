@@ -111,13 +111,23 @@ fi
 
 # --- 6. Core Functions ---
 
-# Adapting to 2026 CLI changes: warp-cli set-mode -> warp-cli mode
 warp_set_mode() {
     local mode=$1
     if warp-cli --help | grep -q "set-mode"; then
         warp-cli set-mode "$mode"
     else
         warp-cli mode "$mode"
+    fi
+}
+
+warp_set_log_level() {
+    local level=$1
+    if warp-cli --help | grep -q "set-proxy-log-level"; then
+        warp-cli set-proxy-log-level "$level"
+    elif warp-cli proxy --help 2>&1 | grep -q "log-level"; then
+        warp-cli proxy log-level "$level"
+    else
+        warp-cli settings set proxy_log_level "$level" 2>/dev/null || true
     fi
 }
 
@@ -199,9 +209,11 @@ config_warp() {
 
     if ! warp-cli registration show | grep -Eq "ID:|Team:"; then printf "%s\n" "${L[fail]:-Fail}"; return; fi
     
-    warp-cli set-proxy-log-level "$LOG_LEVEL"
-    local api_v4=$(getent a engage.cloudflareclient.com | awk '{print $1}' | head -n1)
-    local api_v6=$(getent aaaa engage.cloudflareclient.com | awk '{print $1}' | head -n1)
+    warp_set_log_level "$LOG_LEVEL"
+    
+    local api_v4=$(host -t A engage.cloudflareclient.com | awk '/has address/ {print $4}' | head -n1)
+    local api_v6=$(host -t AAAA engage.cloudflareclient.com | awk '/has IPv6 address/ {print $5}' | head -n1)
+    
     [ -n "$api_v4" ] && warp-cli add-excluded-route "$api_v4/32" &>/dev/null
     [ -n "$api_v6" ] && warp-cli add-excluded-route "$api_v6/128" &>/dev/null
 
